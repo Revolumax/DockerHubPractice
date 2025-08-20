@@ -36,6 +36,7 @@ jobs:
     needs: build-and-push-docker
     steps:
       - name: Deploy to Render
-        run: curl -X POST "https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys" \
+        run: |
+          curl -X POST "https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys" \
           -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
           -H "Accept: application/json"
